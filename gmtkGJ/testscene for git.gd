@@ -11,3 +11,4 @@ func _process(delta):
 	pass
 # Baka
 #counter endring
+#laptop check
