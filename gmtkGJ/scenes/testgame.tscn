@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://boqkby8tdkei8"]
+[gd_scene load_steps=10 format=3 uid="uid://boqkby8tdkei8"]
 
 [ext_resource type="Texture2D" uid="uid://di780eawrdexo" path="res://assets/world_tileset.png" id="1_h5b6x"]
+[ext_resource type="Script" path="res://scripts/testgame.gd" id="1_po6o7"]
 [ext_resource type="PackedScene" uid="uid://djolebpux24do" path="res://scenes/testplater.tscn" id="2_f33b3"]
 [ext_resource type="PackedScene" uid="uid://bfq086vbpcjw4" path="res://scenes/testlight.tscn" id="3_qpy7n"]
+[ext_resource type="Texture2D" uid="uid://cfrefgm2nrsnt" path="res://assets/light.jpg" id="4_32m22"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f6loq"]
+polygon = PackedVector2Array(-8, 16, 8, 16, 0, -8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vj11r"]
 texture = ExtResource("1_h5b6x")
@@ -393,22 +398,52 @@ texture = ExtResource("1_h5b6x")
 3:15/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_teeyn"]
-physics_layer_0/collision_layer = 255
-physics_layer_0/collision_mask = 255
+physics_layer_0/collision_layer = 4
 sources/0 = SubResource("TileSetAtlasSource_vj11r")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kvqeb"]
+polygon = PackedVector2Array(72, 16, 104, 16, 96, -8)
+
 [node name="Testgame" type="Node2D"]
+script = ExtResource("1_po6o7")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 240.0
+offset_bottom = 88.0
+color = Color(0, 0, 0, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_f33b3")]
+position = Vector2(8, 0)
+collision_mask = 6
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Player"]
+occluder = SubResource("OccluderPolygon2D_f6loq")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_qpy7n")]
+position = Vector2(120, -8)
+
+[node name="PointLight2D" type="PointLight2D" parent="StaticBody2D"]
+energy = 16.0
+texture = ExtResource("4_32m22")
+texture_scale = 0.5
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_teeyn")
 format = 2
 layer_0/tile_data = PackedInt32Array(131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0)
 
-[node name="Player" parent="." instance=ExtResource("2_f33b3")]
-position = Vector2(16, -8)
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_kvqeb")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-
-[node name="StaticBody2D" parent="." instance=ExtResource("3_qpy7n")]
-position = Vector2(128, 0)
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 2
