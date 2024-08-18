@@ -10,8 +10,8 @@ script = ExtResource("1_yt2f7")
 
 [node name="player" parent="." instance=ExtResource("2_qphn2")]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="player"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="player"]
 position = Vector2(5, 80)
 shape = SubResource("WorldBoundaryShape2D_ccw8l")
 
-[node name="Camera2D" type="Camera2D" parent="player"]
+[node name="Camera2D2" type="Camera2D" parent="player"]
