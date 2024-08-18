@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0vh1xs76i00p"]
+[gd_scene load_steps=4 format=3 uid="uid://b0vh1xs76i00p"]
 
 [ext_resource type="PackedScene" uid="uid://ruriaowfcwc" path="res://Scenes/Options Menu/hot_key_rebind_button.tscn" id="1_0orln"]
+[ext_resource type="PackedScene" uid="uid://dym8dh8q0iksi" path="res://Scenes/Options Menu/window_mode_button.tscn" id="1_hjxxn"]
+[ext_resource type="PackedScene" uid="uid://cj1nuyq1kaq7x" path="res://Scenes/Options Menu/resolution_mode_button.tscn" id="2_eawsw"]
 
 [node name="Settings_Tab_Container" type="Control"]
 layout_mode = 3
@@ -22,7 +24,7 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
 visible = false
@@ -66,7 +68,6 @@ layout_mode = 2
 text = "123445566"
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graphics"]
@@ -81,34 +82,21 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Graphics/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 64
-alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/MarginContainer/ScrollContainer"]
 layout_mode = 2
-text = "a
-"
+theme_override_constants/separation = 96
 
-[node name="Label2" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+[node name="Window_Mode_Button" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_hjxxn")]
 layout_mode = 2
-text = "b
-"
 
-[node name="Label3" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+[node name="Resolution_Mode_Button" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_eawsw")]
 layout_mode = 2
-text = "123445566"
-
-[node name="Label4" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "123445566"
-
-[node name="Label5" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "123445566"
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls"]
