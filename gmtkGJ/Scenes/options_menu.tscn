@@ -40,7 +40,7 @@ text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Exit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Exit_Options_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
 text = "Exit"
