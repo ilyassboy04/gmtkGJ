@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://boqkby8tdkei8"]
+[gd_scene load_steps=9 format=3 uid="uid://boqkby8tdkei8"]
 
 [ext_resource type="Texture2D" uid="uid://di780eawrdexo" path="res://assets/world_tileset.png" id="1_h5b6x"]
 [ext_resource type="Script" path="res://scripts/testgame.gd" id="1_po6o7"]
@@ -401,9 +401,6 @@ texture = ExtResource("1_h5b6x")
 physics_layer_0/collision_layer = 4
 sources/0 = SubResource("TileSetAtlasSource_vj11r")
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kvqeb"]
-polygon = PackedVector2Array(72, 16, 104, 16, 96, -8)
-
 [node name="Testgame" type="Node2D"]
 script = ExtResource("1_po6o7")
 
@@ -429,21 +426,18 @@ zoom = Vector2(3, 3)
 occluder = SubResource("OccluderPolygon2D_f6loq")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("3_qpy7n")]
-position = Vector2(120, -8)
+position = Vector2(120, -48)
 
 [node name="PointLight2D" type="PointLight2D" parent="StaticBody2D"]
 energy = 16.0
+shadow_enabled = true
 texture = ExtResource("4_32m22")
-texture_scale = 0.5
+texture_scale = 0.75
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_teeyn")
 format = 2
 layer_0/tile_data = PackedInt32Array(131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0)
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
-occluder = SubResource("OccluderPolygon2D_kvqeb")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 collision_layer = 2
