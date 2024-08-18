@@ -25,7 +25,7 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("Remove Shadow"):
 		shadow_locked = false;
-		#draw_shadow()
+		draw_shadow()
 		print("Shadow is removed")
 		
 	if not shadow_locked:
@@ -63,17 +63,25 @@ func update_shadow_body():
 		existing_collision_polygon.polygon = shadow_polygon
 	
 
+# TOOD: Funker kun når jeg er inni light sourcen????
 func draw_shadow():
+	var polygon_visual = shadow_body.get_node_or_null("PolygonVisual") as Polygon2D
 	if(shadow_locked):
-		var polygon_visual = shadow_body.get_node_or_null("PolygonVisual") as Polygon2D
 		if polygon_visual == null:
 			polygon_visual = Polygon2D.new()
 			polygon_visual.name = "polygon_visual"
 			shadow_body.add_child(polygon_visual)
 	
 		polygon_visual.polygon = shadow_polygon
+		
 		polygon_visual.color = Color.BLACK
 	
+	else:
+		if(polygon_visual != null):
+			polygon_visual.queue_redraw()
+			print("Tets")
+	
+	shadow_body.force_update_transform()
 	# TODO: må fjerne den når jeg trykker 2, den må kunne bli tegnet flere ganger
 
  
