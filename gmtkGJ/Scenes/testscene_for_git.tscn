@@ -3,15 +3,17 @@
 [ext_resource type="Script" path="res://Script/testscene for git.gd" id="1_yt2f7"]
 [ext_resource type="PackedScene" uid="uid://hghb3v0aagex" path="res://Scenes/player.tscn" id="2_qphn2"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ccw8l"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_utc8i"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_yt2f7")
 
 [node name="player" parent="." instance=ExtResource("2_qphn2")]
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="player"]
-position = Vector2(5, 80)
-shape = SubResource("WorldBoundaryShape2D_ccw8l")
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Camera2D2" type="Camera2D" parent="player"]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(12, 48)
+shape = SubResource("WorldBoundaryShape2D_utc8i")
