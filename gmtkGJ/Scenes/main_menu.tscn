@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Script/Menu_Script.gd" id="1_gica0"]
 [ext_resource type="Texture2D" uid="uid://byfduy3j7yvlf" path="res://assets/Background.png" id="2_ejp5n"]
-[ext_resource type="PackedScene" uid="uid://bc60gmqn7yp56" path="res://Scenes/options_menu.tscn" id="3_grkgl"]
+[ext_resource type="PackedScene" uid="uid://bc60gmqn7yp56" path="res://Scenes/Options Menu/options_menu.tscn" id="3_grkgl"]
 
 [sub_resource type="SystemFont" id="SystemFont_sidce"]
 font_names = PackedStringArray("Impact")

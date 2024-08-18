@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvtxk21owihex"]
+[gd_scene load_steps=4 format=3 uid="uid://dvtxk21owihex"]
 
 [ext_resource type="Script" path="res://Script/testscene for git.gd" id="1_yt2f7"]
+[ext_resource type="PackedScene" uid="uid://hghb3v0aagex" path="res://Scenes/player.tscn" id="2_qphn2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ccw8l"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_yt2f7")
+
+[node name="player" parent="." instance=ExtResource("2_qphn2")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="player"]
+position = Vector2(5, 80)
+shape = SubResource("WorldBoundaryShape2D_ccw8l")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
